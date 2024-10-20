@@ -13,7 +13,7 @@ import Footer from "../components/Footer.astro";
 			<h1 class="mt-8 font-semibold text-3xl text-center lg:text-4xl">Welcome to Prompt Enhancer</h1>
 			<p class="mt-4 text-center">A simple tool to improve your artificial intelligence promts</p>
 			<div class="relative flex flex-col justify-center items-center mt-10 w-full md:w-2/3 lg:w-1/3">
-				<textarea id="textarea-prompt" placeholder="Write your prompt (at least 5 words)" class="relative bg-teal-900 bg-opacity-15 p-2 border border-teal-200 rounded-lg w-full h-96 outline-none resize-none"></textarea>
+				<textarea id="textarea-prompt" placeholder="Write your prompt (at least 5 words)" class="relative bg-teal-900 bg-opacity-15 p-2 border border-teal-200 rounded-lg w-full h-96 outline-none resize-none" maxlength="1000"></textarea>
 				<ClearButton />
 				<CopyButton />
 				<button id="sendButton" class="hover:brightness-[120%] disabled:brightness-75 bg-teal-700 mt-4 p-4 rounded-lg w-full text-white disabled:cursor-not-allowed">Enhance</button>
