@@ -1,0 +1,48 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import CopyButton from "../components/CopyButton.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="Prompt enhancer">
+	<main class="relative z-10 min-h-screen">
+		<Navbar />
+		<section class="flex flex-col items-center px-10 md:px-0 pt-12 pb-40">
+			<h1 class="mt-8 font-semibold text-3xl text-center lg:text-4xl">Welcome to Prompt Enhancer</h1>
+			<p class="mt-4 text-center">A simple tool to improve your artificial intelligence promts</p>
+			<div class="relative flex flex-col justify-center items-center mt-10 w-full md:w-2/3 lg:w-1/3">
+				<textarea id="textarea-prompt" placeholder="Write your prompt (at least 5 words)" class="relative bg-teal-900 bg-opacity-15 p-2 border border-teal-200 rounded-lg w-full h-96 outline-none resize-none"></textarea>
+				<CopyButton />
+				<button id="sendButton" class="hover:brightness-[120%] bg-teal-700 mt-4 p-4 rounded-lg w-full text-white">Enhance</button>
+			</div>
+		</section>
+		<Footer />
+	</main>
+</Layout>
+
+<script>
+	import getStream from "../utils/getStream.ts";
+  import { $ } from "../utils/dom.ts";
+
+  const sendButton = $("#sendButton") as HTMLButtonElement;
+  const textareaPrompt = $("#textarea-prompt") as HTMLTextAreaElement;
+
+	sendButton.disabled = true;
+
+	textareaPrompt.addEventListener("input", () => {
+		if (textareaPrompt.value.split(' ').length >= 5) {
+			sendButton.disabled = false;
+		} else {
+			sendButton.disabled = true;
+		}
+	});
+
+  sendButton?.addEventListener("click", () => {
+    getStream(
+      textareaPrompt.value,
+      textareaPrompt,
+      sendButton
+    );
+  });
+</script>
