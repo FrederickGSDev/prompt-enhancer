@@ -3,7 +3,7 @@ import { HfInference } from "@huggingface/inference";
 import { ENHANCER_PROMPT } from "../../utils/prompts";
 import { HF_API_KEY } from 'astro:env/server';
 
-export const GET: APIRoute = ({ params, request }) => {
+export const GET: APIRoute = ({  }) => {
   return new Response(JSON.stringify({
     message: "Prompt enhancer API - Standard Free Plan"
   }));
