@@ -22,6 +22,15 @@ export const POST: APIRoute = async ({ request }) => {
         });
       }
 
+      // Limitar a 1000 palabras
+      if (message.split(" ").length > 1000) {
+        return new Response(JSON.stringify({
+          message: "The prompt must be less than 1000 words."
+        }), {
+          status: 400
+        });
+      }
+
       const prompt = ENHANCER_PROMPT(message);
       const encoder = new TextEncoder();
 
