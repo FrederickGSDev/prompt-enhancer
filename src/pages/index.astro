@@ -16,7 +16,7 @@ import Footer from "../components/Footer.astro";
 				<textarea id="textarea-prompt" placeholder="Write your prompt (at least 5 words)" class="relative bg-teal-900 bg-opacity-15 p-2 border border-teal-200 rounded-lg w-full h-96 outline-none resize-none"></textarea>
 				<ClearButton />
 				<CopyButton />
-				<button id="sendButton" class="hover:brightness-[120%] bg-teal-700 mt-4 p-4 rounded-lg w-full text-white">Enhance</button>
+				<button id="sendButton" class="hover:brightness-[120%] disabled:brightness-75 bg-teal-700 mt-4 p-4 rounded-lg w-full text-white disabled:cursor-not-allowed">Enhance</button>
 			</div>
 		</section>
 		<Footer />
@@ -31,12 +31,15 @@ import Footer from "../components/Footer.astro";
   const textareaPrompt = $("#textarea-prompt") as HTMLTextAreaElement;
 
 	sendButton.disabled = true;
+	sendButton.innerText = "Type your prompt first";
 
 	textareaPrompt.addEventListener("input", () => {
 		if (textareaPrompt.value.split(' ').length >= 5) {
 			sendButton.disabled = false;
+			sendButton.innerText = "Enhance";
 		} else {
 			sendButton.disabled = true;
+			sendButton.innerText = "Type your prompt first";
 		}
 	});
 

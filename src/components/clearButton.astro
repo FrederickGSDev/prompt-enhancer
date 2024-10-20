@@ -12,8 +12,11 @@
 
   const clearButton = $("#clear-button") as HTMLButtonElement;
   const textareaPrompt = $("#textarea-prompt") as HTMLTextAreaElement;
+  const sendButton = $("#sendButton") as HTMLButtonElement;
 
   clearButton?.addEventListener("click", () => {
     clearTextarea(textareaPrompt);
+    sendButton.disabled = true;
+	  sendButton.innerText = "Type your prompt first";
   });
 </script>
